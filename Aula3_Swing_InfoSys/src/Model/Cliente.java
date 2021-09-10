@@ -7,6 +7,14 @@ public class Cliente {
     private String celular = null;
     private String email = null;
 
+    public Cliente(String n, String cpf, String f, String cel, String e) {
+        this.setNome(n);
+        this.setCpf(cpf);
+        this.setFone(f);
+        this.setCelular(cel);
+        this.setEmail(e);
+    }
+    
     public String getNome() {
         return nome;
     }

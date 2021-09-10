@@ -5,6 +5,8 @@
  */
 package View;
 
+import Model.Cliente;
+
 /**
  *
  * @author vitor
@@ -16,6 +18,7 @@ public class TelaCadastro extends javax.swing.JFrame {
      */
     public TelaCadastro() {
         initComponents();
+        tfCliNome.requestFocus();
     }
 
     /**
@@ -46,6 +49,15 @@ public class TelaCadastro extends javax.swing.JFrame {
         tfCliEmail = new javax.swing.JTextField();
         lbCliEmail = new javax.swing.JLabel();
         pnProduto = new javax.swing.JPanel();
+        lbCliNome1 = new javax.swing.JLabel();
+        tfCliNome1 = new javax.swing.JTextField();
+        jSpinner1 = new javax.swing.JSpinner();
+        lbCliNome2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        tfCliNome2 = new javax.swing.JTextField();
+        lbCliNome3 = new javax.swing.JLabel();
+        tfCliNome3 = new javax.swing.JTextField();
+        lbCliNome4 = new javax.swing.JLabel();
         pnServico = new javax.swing.JPanel();
         pnTecnico = new javax.swing.JPanel();
 
@@ -85,8 +97,18 @@ public class TelaCadastro extends javax.swing.JFrame {
         pnButtons.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btLimpar.setText("Limpar");
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
 
         btGravar.setText("Gravar");
+        btGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGravarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnButtonsLayout = new javax.swing.GroupLayout(pnButtons);
         pnButtons.setLayout(pnButtonsLayout);
@@ -151,7 +173,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                             .addComponent(lbCliCPF)
                             .addGap(37, 37, 37)
                             .addComponent(tfCliCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         pnClienteLayout.setVerticalGroup(
             pnClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,20 +198,87 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(pnClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCliEmail)
                     .addComponent(tfCliEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         tbTela.addTab("Clientes", pnCliente);
+
+        lbCliNome1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbCliNome1.setText("Descrição:");
+
+        lbCliNome2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbCliNome2.setText("Estoque:");
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Preço", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+
+        lbCliNome3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbCliNome3.setText("Custo:");
+
+        lbCliNome4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbCliNome4.setText("Venda:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(lbCliNome3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfCliNome2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(lbCliNome4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfCliNome3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbCliNome3)
+                    .addComponent(tfCliNome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbCliNome4)
+                        .addComponent(tfCliNome3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout pnProdutoLayout = new javax.swing.GroupLayout(pnProduto);
         pnProduto.setLayout(pnProdutoLayout);
         pnProdutoLayout.setHorizontalGroup(
             pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 554, Short.MAX_VALUE)
+            .addGroup(pnProdutoLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnProdutoLayout.createSequentialGroup()
+                        .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbCliNome1)
+                            .addComponent(lbCliNome2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnProdutoLayout.createSequentialGroup()
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(330, 330, 330))
+                            .addComponent(tfCliNome1))))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         pnProdutoLayout.setVerticalGroup(
             pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 246, Short.MAX_VALUE)
+            .addGroup(pnProdutoLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbCliNome1)
+                    .addComponent(tfCliNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbCliNome2)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tbTela.addTab("Produtos", pnProduto);
@@ -198,11 +287,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         pnServico.setLayout(pnServicoLayout);
         pnServicoLayout.setHorizontalGroup(
             pnServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 554, Short.MAX_VALUE)
+            .addGap(0, 555, Short.MAX_VALUE)
         );
         pnServicoLayout.setVerticalGroup(
             pnServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 246, Short.MAX_VALUE)
+            .addGap(0, 242, Short.MAX_VALUE)
         );
 
         tbTela.addTab("Serviços", pnServico);
@@ -211,11 +300,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         pnTecnico.setLayout(pnTecnicoLayout);
         pnTecnicoLayout.setHorizontalGroup(
             pnTecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 554, Short.MAX_VALUE)
+            .addGap(0, 555, Short.MAX_VALUE)
         );
         pnTecnicoLayout.setVerticalGroup(
             pnTecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 246, Short.MAX_VALUE)
+            .addGap(0, 242, Short.MAX_VALUE)
         );
 
         tbTela.addTab("Tecnicos", pnTecnico);
@@ -241,6 +330,35 @@ public class TelaCadastro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        this.limpaCliente();
+    }//GEN-LAST:event_btLimparActionPerformed
+
+    private void btGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGravarActionPerformed
+        this.gravaCliente();
+    }//GEN-LAST:event_btGravarActionPerformed
+
+    private void limpaCliente() {
+        tfCliNome.setText("");
+        tfCliCPF.setText("");
+        tfCliFone.setText("");
+        tfCliCelular.setText("");
+        tfCliEmail.setText("");
+        tfCliNome.requestFocus();
+    }
+    
+    private void gravaCliente() {
+        String nome = tfCliNome.getText();
+        String cpf = tfCliCPF.getText();
+        String fone = tfCliFone.getText();
+        String celular = tfCliCelular.getText();
+        String email = tfCliEmail.getText();
+        
+        Cliente c = new Cliente(nome, cpf, fone, celular, email);
+        System.out.println(c);
+        this.limpaCliente();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -279,11 +397,17 @@ public class TelaCadastro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btGravar;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lbCliCPF;
     private javax.swing.JLabel lbCliCelular;
     private javax.swing.JLabel lbCliEmail;
     private javax.swing.JLabel lbCliFone;
     private javax.swing.JLabel lbCliNome;
+    private javax.swing.JLabel lbCliNome1;
+    private javax.swing.JLabel lbCliNome2;
+    private javax.swing.JLabel lbCliNome3;
+    private javax.swing.JLabel lbCliNome4;
     private javax.swing.JLabel lbLogo;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JPanel pnButtons;
@@ -298,5 +422,9 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField tfCliEmail;
     private javax.swing.JTextField tfCliFone;
     private javax.swing.JTextField tfCliNome;
+    private javax.swing.JTextField tfCliNome1;
+    private javax.swing.JTextField tfCliNome2;
+    private javax.swing.JTextField tfCliNome3;
     // End of variables declaration//GEN-END:variables
+
 }
