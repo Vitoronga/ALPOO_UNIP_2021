@@ -4,14 +4,14 @@ public class Produto {
     private String descricao = null;
     private int estoque;
     private boolean ativo = false;
-    private double valor = 0;
     private double custo = 0;
+    private double valor = 0;
 
-    public Produto(String d, int e, double v, double c) {
+    public Produto(String d, int e, double c, double v) {
         this.setDescricao(d);
         this.setEstoque(e);
-        this.setValor(v);
         this.setCusto(c);
+        this.setValor(v);
         this.setAtivo(true);
     }
     

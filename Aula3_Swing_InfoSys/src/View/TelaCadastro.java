@@ -6,6 +6,8 @@
 package View;
 
 import Model.Cliente;
+import Model.Produto;
+import Model.Tecnico;
 
 /**
  *
@@ -49,17 +51,26 @@ public class TelaCadastro extends javax.swing.JFrame {
         tfCliEmail = new javax.swing.JTextField();
         lbCliEmail = new javax.swing.JLabel();
         pnProduto = new javax.swing.JPanel();
-        lbCliNome1 = new javax.swing.JLabel();
-        tfCliNome1 = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
-        lbCliNome2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        tfCliNome2 = new javax.swing.JTextField();
-        lbCliNome3 = new javax.swing.JLabel();
-        tfCliNome3 = new javax.swing.JTextField();
-        lbCliNome4 = new javax.swing.JLabel();
+        lbProDescricao = new javax.swing.JLabel();
+        tfProDescricao = new javax.swing.JTextField();
+        spProEstoque = new javax.swing.JSpinner();
+        lbProEstoque = new javax.swing.JLabel();
+        pnPreco = new javax.swing.JPanel();
+        tfProCusto = new javax.swing.JTextField();
+        lbProCusto = new javax.swing.JLabel();
+        tfProValor = new javax.swing.JTextField();
+        lbProValor = new javax.swing.JLabel();
+        cbAtivo = new javax.swing.JCheckBox();
         pnServico = new javax.swing.JPanel();
         pnTecnico = new javax.swing.JPanel();
+        lbTecNome = new javax.swing.JLabel();
+        tfTecNome = new javax.swing.JTextField();
+        tfTecSalario = new javax.swing.JTextField();
+        lbTecSalario = new javax.swing.JLabel();
+        lbTecCargo = new javax.swing.JLabel();
+        tfTecCargo = new javax.swing.JTextField();
+        lbTecDepartamento = new javax.swing.JLabel();
+        tfTecDepartamento = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -198,52 +209,61 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(pnClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCliEmail)
                     .addComponent(tfCliEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         tbTela.addTab("Clientes", pnCliente);
 
-        lbCliNome1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbCliNome1.setText("Descrição:");
+        lbProDescricao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbProDescricao.setText("Descrição:");
 
-        lbCliNome2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbCliNome2.setText("Estoque:");
+        spProEstoque.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spProEstoqueStateChanged(evt);
+            }
+        });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Preço", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        lbProEstoque.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbProEstoque.setText("Estoque:");
 
-        lbCliNome3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbCliNome3.setText("Custo:");
+        pnPreco.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Preço", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
 
-        lbCliNome4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbCliNome4.setText("Venda:");
+        lbProCusto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbProCusto.setText("Custo:");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        lbProValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbProValor.setText("Venda:");
+
+        javax.swing.GroupLayout pnPrecoLayout = new javax.swing.GroupLayout(pnPreco);
+        pnPreco.setLayout(pnPrecoLayout);
+        pnPrecoLayout.setHorizontalGroup(
+            pnPrecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnPrecoLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(lbCliNome3)
+                .addComponent(lbProCusto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tfCliNome2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfProCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
-                .addComponent(lbCliNome4)
+                .addComponent(lbProValor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tfCliNome3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(tfProValor, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnPrecoLayout.setVerticalGroup(
+            pnPrecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnPrecoLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbCliNome3)
-                    .addComponent(tfCliNome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbCliNome4)
-                        .addComponent(tfCliNome3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(pnPrecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnPrecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbProValor)
+                        .addComponent(tfProValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnPrecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbProCusto)
+                        .addComponent(tfProCusto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
+
+        cbAtivo.setText("Ativo");
 
         javax.swing.GroupLayout pnProdutoLayout = new javax.swing.GroupLayout(pnProduto);
         pnProduto.setLayout(pnProdutoLayout);
@@ -252,17 +272,19 @@ public class TelaCadastro extends javax.swing.JFrame {
             .addGroup(pnProdutoLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnPreco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnProdutoLayout.createSequentialGroup()
                         .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbCliNome1)
-                            .addComponent(lbCliNome2))
+                            .addComponent(lbProDescricao)
+                            .addComponent(lbProEstoque))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfProDescricao)
                             .addGroup(pnProdutoLayout.createSequentialGroup()
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(330, 330, 330))
-                            .addComponent(tfCliNome1))))
+                                .addComponent(spProEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbAtivo)
+                                .addGap(79, 79, 79)))))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         pnProdutoLayout.setVerticalGroup(
@@ -270,14 +292,15 @@ public class TelaCadastro extends javax.swing.JFrame {
             .addGroup(pnProdutoLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbCliNome1)
-                    .addComponent(tfCliNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(lbProDescricao)
+                    .addComponent(tfProDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbCliNome2)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbProEstoque)
+                    .addComponent(spProEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbAtivo))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -291,20 +314,76 @@ public class TelaCadastro extends javax.swing.JFrame {
         );
         pnServicoLayout.setVerticalGroup(
             pnServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 242, Short.MAX_VALUE)
+            .addGap(0, 244, Short.MAX_VALUE)
         );
 
         tbTela.addTab("Serviços", pnServico);
+
+        lbTecNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbTecNome.setText("Nome:");
+
+        tfTecSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfTecSalarioActionPerformed(evt);
+            }
+        });
+
+        lbTecSalario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbTecSalario.setText("Salário:");
+
+        lbTecCargo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbTecCargo.setText("Cargo:");
+
+        lbTecDepartamento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbTecDepartamento.setText("Departamento:");
 
         javax.swing.GroupLayout pnTecnicoLayout = new javax.swing.GroupLayout(pnTecnico);
         pnTecnico.setLayout(pnTecnicoLayout);
         pnTecnicoLayout.setHorizontalGroup(
             pnTecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 555, Short.MAX_VALUE)
+            .addGroup(pnTecnicoLayout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addGroup(pnTecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnTecnicoLayout.createSequentialGroup()
+                        .addComponent(lbTecCargo)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnTecnicoLayout.createSequentialGroup()
+                        .addGroup(pnTecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnTecnicoLayout.createSequentialGroup()
+                                .addComponent(lbTecDepartamento)
+                                .addGap(18, 18, 18)
+                                .addComponent(tfTecDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnTecnicoLayout.createSequentialGroup()
+                                .addGroup(pnTecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbTecSalario)
+                                    .addComponent(lbTecNome))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnTecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfTecNome, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfTecSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfTecCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 95, Short.MAX_VALUE))))
         );
         pnTecnicoLayout.setVerticalGroup(
             pnTecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 242, Short.MAX_VALUE)
+            .addGroup(pnTecnicoLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(pnTecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbTecNome)
+                    .addComponent(tfTecNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnTecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbTecSalario)
+                    .addComponent(tfTecSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnTecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbTecCargo)
+                    .addComponent(tfTecCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnTecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbTecDepartamento)
+                    .addComponent(tfTecDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         tbTela.addTab("Tecnicos", pnTecnico);
@@ -331,12 +410,27 @@ public class TelaCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        this.limpaCliente();
+        if (tbTela.getSelectedComponent() == pnCliente) limpaCliente();
+        else if (tbTela.getSelectedComponent() == pnProduto) limpaProduto();
+        else if (tbTela.getSelectedComponent() == pnTecnico) limpaTecnico();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGravarActionPerformed
-        this.gravaCliente();
+        if (tbTela.getSelectedComponent() == pnCliente) gravaCliente();
+        else if (tbTela.getSelectedComponent() == pnProduto) gravaProduto();
+        else if (tbTela.getSelectedComponent() == pnTecnico) gravaTecnico();
+        
     }//GEN-LAST:event_btGravarActionPerformed
+
+    private void spProEstoqueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spProEstoqueStateChanged
+        int v = (int) spProEstoque.getValue();
+        
+        if (v < 0) spProEstoque.setValue(0); //não deixa o valor ser negativo
+    }//GEN-LAST:event_spProEstoqueStateChanged
+
+    private void tfTecSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTecSalarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfTecSalarioActionPerformed
 
     private void limpaCliente() {
         tfCliNome.setText("");
@@ -353,10 +447,43 @@ public class TelaCadastro extends javax.swing.JFrame {
         String fone = tfCliFone.getText();
         String celular = tfCliCelular.getText();
         String email = tfCliEmail.getText();
-        
-        Cliente c = new Cliente(nome, cpf, fone, celular, email);
-        System.out.println(c);
+        System.out.println(new Cliente(nome, cpf, fone, celular, email));
         this.limpaCliente();
+    }
+    
+    private void limpaProduto() {
+        tfProDescricao.setText("");
+        spProEstoque.setValue(0);
+        cbAtivo.setSelected(true);
+        tfProCusto.setText("");
+        tfProValor.setText("");
+        tfProDescricao.requestFocus();
+    }
+       
+    private void gravaProduto() {
+        String descricao = tfProDescricao.getText();
+        int estoque = (int) spProEstoque.getValue();
+        double custo = Double.parseDouble(tfProCusto.getText());
+        double valor = Double.parseDouble(tfProValor.getText());
+        System.out.println(new Produto(descricao, estoque, custo, valor));
+        limpaProduto();
+    }
+    
+    private void limpaTecnico() {
+        tfTecNome.setText("");
+        tfTecSalario.setText("");
+        tfTecCargo.setText("");
+        tfTecDepartamento.setText("");
+        tfTecNome.requestFocus();
+    }
+    
+    private void gravaTecnico() {
+        String nome = tfTecNome.getText();
+        double salario = Double.parseDouble(tfTecSalario.getText());
+        String cargo = tfTecCargo.getText();
+        String departamento = tfTecDepartamento.getText();
+        System.out.println(new Tecnico(nome, salario, cargo, departamento));
+        limpaTecnico();
     }
     
     /**
@@ -397,34 +524,43 @@ public class TelaCadastro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btGravar;
     private javax.swing.JButton btLimpar;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JCheckBox cbAtivo;
     private javax.swing.JLabel lbCliCPF;
     private javax.swing.JLabel lbCliCelular;
     private javax.swing.JLabel lbCliEmail;
     private javax.swing.JLabel lbCliFone;
     private javax.swing.JLabel lbCliNome;
-    private javax.swing.JLabel lbCliNome1;
-    private javax.swing.JLabel lbCliNome2;
-    private javax.swing.JLabel lbCliNome3;
-    private javax.swing.JLabel lbCliNome4;
     private javax.swing.JLabel lbLogo;
+    private javax.swing.JLabel lbProCusto;
+    private javax.swing.JLabel lbProDescricao;
+    private javax.swing.JLabel lbProEstoque;
+    private javax.swing.JLabel lbProValor;
+    private javax.swing.JLabel lbTecCargo;
+    private javax.swing.JLabel lbTecDepartamento;
+    private javax.swing.JLabel lbTecNome;
+    private javax.swing.JLabel lbTecSalario;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JPanel pnButtons;
     private javax.swing.JPanel pnCliente;
+    private javax.swing.JPanel pnPreco;
     private javax.swing.JPanel pnProduto;
     private javax.swing.JPanel pnServico;
     private javax.swing.JPanel pnTecnico;
     private javax.swing.JPanel pnTitulo;
+    private javax.swing.JSpinner spProEstoque;
     private javax.swing.JTabbedPane tbTela;
     private javax.swing.JTextField tfCliCPF;
     private javax.swing.JTextField tfCliCelular;
     private javax.swing.JTextField tfCliEmail;
     private javax.swing.JTextField tfCliFone;
     private javax.swing.JTextField tfCliNome;
-    private javax.swing.JTextField tfCliNome1;
-    private javax.swing.JTextField tfCliNome2;
-    private javax.swing.JTextField tfCliNome3;
+    private javax.swing.JTextField tfProCusto;
+    private javax.swing.JTextField tfProDescricao;
+    private javax.swing.JTextField tfProValor;
+    private javax.swing.JTextField tfTecCargo;
+    private javax.swing.JTextField tfTecDepartamento;
+    private javax.swing.JTextField tfTecNome;
+    private javax.swing.JTextField tfTecSalario;
     // End of variables declaration//GEN-END:variables
 
 }
