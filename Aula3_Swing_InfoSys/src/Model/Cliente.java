@@ -14,6 +14,11 @@ public class Cliente {
         this.setCelular(cel);
         this.setEmail(e);
     }
+        /** Método Construtor recebendo os parâmetros nome, cpf, fone, celular e email
+         * do tipo String e chamando os métodos sets dos mesmos
+         * 
+         * @return 
+         */
     
     public String getNome() {
         return nome;

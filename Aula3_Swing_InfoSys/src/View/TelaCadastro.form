@@ -167,35 +167,34 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="tfCliNome" min="-2" pref="360" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="lbCliEmail" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="tfCliEmail" min="-2" pref="360" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lbCliCelular" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="tfCliCelular" min="-2" pref="360" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lbCliFone" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="tfCliFone" min="-2" pref="360" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="lbCliNome" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lbCliCPF" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="tfCliCPF" min="-2" pref="360" max="-2" attributes="0"/>
-                              </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lbCliEmail" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="tfCliEmail" min="-2" pref="360" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbCliCelular" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="tfCliCelular" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbCliFone" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="tfCliFone" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbCliNome" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="21" max="32767" attributes="0"/>
+                              <Component id="tfCliNome" min="-2" pref="360" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbCliCPF" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="tfCliCPF" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="67" max="32767" attributes="0"/>
+                      <EmptySpace pref="126" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -241,10 +240,6 @@
                 <Property name="text" type="java.lang.String" value="Nome: "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfCliNome">
-            </Component>
-            <Component class="javax.swing.JTextField" name="tfCliCPF">
-            </Component>
             <Component class="javax.swing.JLabel" name="lbCliCPF">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -253,8 +248,6 @@
                 <Property name="text" type="java.lang.String" value="CPF:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfCliFone">
-            </Component>
             <Component class="javax.swing.JLabel" name="lbCliFone">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -262,8 +255,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Telefone:"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="tfCliCelular">
             </Component>
             <Component class="javax.swing.JLabel" name="lbCliCelular">
               <Properties>
@@ -283,6 +274,20 @@
                 <Property name="text" type="java.lang.String" value="Email:"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JFormattedTextField" name="tfCliCPF">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCliCPFActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="tfCliNome">
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="tfCliFone">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCliFoneActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="tfCliCelular">
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnProduto">
@@ -298,27 +303,27 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="pnPreco" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lbProDescricao" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbProEstoque" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tfProDescricao" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="spProEstoque" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="cbAtivo" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="tfProDescricao" min="-2" pref="360" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="62" max="32767" attributes="0"/>
+                      <EmptySpace pref="98" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -383,12 +388,12 @@
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           <Component id="lbProCusto" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="tfProCusto" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                          <Component id="tfProCusto" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                           <Component id="lbProValor" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="tfProValor" min="-2" pref="80" max="-2" attributes="0"/>
-                          <EmptySpace pref="45" max="32767" attributes="0"/>
+                          <Component id="tfProValor" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -412,8 +417,6 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="tfProCusto">
-                </Component>
                 <Component class="javax.swing.JLabel" name="lbProCusto">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -422,8 +425,6 @@
                     <Property name="text" type="java.lang.String" value="Custo:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfProValor">
-                </Component>
                 <Component class="javax.swing.JLabel" name="lbProValor">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -431,6 +432,10 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Venda:"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JFormattedTextField" name="tfProCusto">
+                </Component>
+                <Component class="javax.swing.JFormattedTextField" name="tfProValor">
                 </Component>
               </SubComponents>
             </Container>
@@ -453,7 +458,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="555" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="614" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -497,12 +502,12 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="tfTecNome" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                          <Component id="tfTecSalario" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
                                           <Component id="tfTecCargo" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                          <Component id="tfTecSalario" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="95" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="154" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -547,11 +552,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="tfTecNome">
             </Component>
-            <Component class="javax.swing.JTextField" name="tfTecSalario">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfTecSalarioActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JLabel" name="lbTecSalario">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -579,6 +579,8 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfTecDepartamento">
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="tfTecSalario">
             </Component>
           </SubComponents>
         </Container>
