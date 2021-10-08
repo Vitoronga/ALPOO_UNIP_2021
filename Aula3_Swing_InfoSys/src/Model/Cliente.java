@@ -1,6 +1,9 @@
 package Model;
 
+import DAO.ClienteDAO;
+
 public class Cliente {
+    private int codigo = 0;
     private String nome = null; // talvez o null ajude pra retornar get vazio...
     private String cpf = null;
     private String fone = null;
@@ -13,12 +16,22 @@ public class Cliente {
         this.setFone(f);
         this.setCelular(cel);
         this.setEmail(e);
+        
+        this.gravar();
     }
         /** Método Construtor recebendo os parâmetros nome, cpf, fone, celular e email
          * do tipo String e chamando os métodos sets dos mesmos
          * 
          * @return 
          */
+    
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
     
     public String getNome() {
         return nome;
@@ -64,12 +77,20 @@ public class Cliente {
     public String toString() {
         String ret;
         
-        ret = "Cliente.: [" + this.getNome() + "]\n" +
+        ret = "Código..: [" + this.getCodigo() + "]\n" +
+              "Cliente.: [" + this.getNome() + "]\n" +
               "CPF.....: [" + this.getCpf() + "]\n" +
               "Telefone: [" + this.getFone() + "]\n" +
               "Celular.: [" + this.getCelular() + "]\n" +
               "Email...: [" + this.getEmail() + "]\n";
         
         return ret;
+    }
+    
+    private void gravar() {
+        ClienteDAO dao = new ClienteDAO();
+        int cod = dao.create(this);
+        
+        if(cod > 0) this.setCodigo(cod);
     }
 }

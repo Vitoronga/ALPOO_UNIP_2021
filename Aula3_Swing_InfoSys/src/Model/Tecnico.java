@@ -1,6 +1,9 @@
 package Model;
 
+import DAO.TecnicoDAO;
+
 public class Tecnico {
+    private int codigo = 0;
     private String nome;
     private double salario;
     private String cargo;
@@ -11,6 +14,16 @@ public class Tecnico {
         this.setSalario(salario);
         this.setCargo(cargo);
         this.setDepartamento(departamento);
+        
+        this.gravar();
+    }
+    
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
     
     public String getNome() {
@@ -49,11 +62,19 @@ public class Tecnico {
     public String toString() {
         String ret = "";
         
-        ret += "Nome........: " + this.getNome() +
+        ret += "Codigo......: " + this.getCodigo() +
+             "\nNome........: " + this.getNome() +
              "\nSalário.....: " + this.getSalario() +
              "\nCargo.......: " + this.getCargo() +
              "\nDepartamento: " + this.getDepartamento();
         
         return ret;
+    }
+    
+    private void gravar() {
+        TecnicoDAO dao = new TecnicoDAO();
+        int cod = dao.create(this);
+        
+        if(cod > 0) this.setCodigo(cod);
     }
 }

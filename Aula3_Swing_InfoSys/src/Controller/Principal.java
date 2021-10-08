@@ -8,5 +8,7 @@ public class Principal {
         Configura.lookAndFeel("Windows Classic");
         
         new TelaCadastro().setVisible(true);
+        
+        DAO.ConnectionFactory.getConnection();
     }
 }

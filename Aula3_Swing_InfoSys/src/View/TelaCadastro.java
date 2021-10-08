@@ -7,6 +7,7 @@ package View;
 
 import Model.Cliente;
 import Model.Produto;
+import Model.Servico;
 import Model.Tecnico;
 import Resources.Converte;
 import Resources.Mascara;
@@ -65,6 +66,12 @@ public class TelaCadastro extends javax.swing.JFrame {
         tfProValor = new javax.swing.JFormattedTextField();
         cbAtivo = new javax.swing.JCheckBox();
         pnServico = new javax.swing.JPanel();
+        lbSerNome = new javax.swing.JLabel();
+        tfSerNome = new javax.swing.JTextField();
+        lbSerServico = new javax.swing.JLabel();
+        cbSerServico = new javax.swing.JComboBox<>();
+        lbSerValor = new javax.swing.JLabel();
+        tfSerValor = new javax.swing.JFormattedTextField();
         pnTecnico = new javax.swing.JPanel();
         lbTecNome = new javax.swing.JLabel();
         tfTecNome = new javax.swing.JTextField();
@@ -321,15 +328,55 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         tbTela.addTab("Produtos", pnProduto);
 
+        lbSerNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbSerNome.setText("Nome: ");
+
+        lbSerServico.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbSerServico.setText("Serviço:");
+
+        cbSerServico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Assistência técnica", "Limpeza física", "Limpeza de disco" }));
+        cbSerServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSerServicoActionPerformed(evt);
+            }
+        });
+
+        lbSerValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbSerValor.setText("Valor");
+
         javax.swing.GroupLayout pnServicoLayout = new javax.swing.GroupLayout(pnServico);
         pnServico.setLayout(pnServicoLayout);
         pnServicoLayout.setHorizontalGroup(
             pnServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 614, Short.MAX_VALUE)
+            .addGroup(pnServicoLayout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addGroup(pnServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbSerServico)
+                    .addComponent(lbSerValor)
+                    .addComponent(lbSerNome))
+                .addGap(18, 18, 18)
+                .addGroup(pnServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfSerNome, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbSerServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfSerValor, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         pnServicoLayout.setVerticalGroup(
             pnServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 244, Short.MAX_VALUE)
+            .addGroup(pnServicoLayout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addGroup(pnServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfSerNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbSerNome))
+                .addGap(18, 18, 18)
+                .addGroup(pnServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbSerServico)
+                    .addComponent(cbSerServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbSerValor)
+                    .addComponent(tfSerValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         tbTela.addTab("Serviços", pnServico);
@@ -421,12 +468,14 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         if (tbTela.getSelectedComponent() == pnCliente) limpaCliente();
         else if (tbTela.getSelectedComponent() == pnProduto) limpaProduto();
+        else if (tbTela.getSelectedComponent() == pnServico) limpaServico();
         else if (tbTela.getSelectedComponent() == pnTecnico) limpaTecnico();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGravarActionPerformed
         if (tbTela.getSelectedComponent() == pnCliente) gravaCliente();
         else if (tbTela.getSelectedComponent() == pnProduto) gravaProduto();
+        else if (tbTela.getSelectedComponent() == pnServico) gravaServico();
         else if (tbTela.getSelectedComponent() == pnTecnico) gravaTecnico();
         
     }//GEN-LAST:event_btGravarActionPerformed
@@ -444,6 +493,10 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void tfCliCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCliCPFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCliCPFActionPerformed
+
+    private void cbSerServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSerServicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbSerServicoActionPerformed
     
     private void limpaCliente() {
         tfCliNome.setText("");
@@ -486,6 +539,22 @@ public class TelaCadastro extends javax.swing.JFrame {
         limpaProduto();
     }
     
+    private void limpaServico() {
+        tfSerNome.setText("");
+        tfSerValor.setText("0,00");
+        cbSerServico.setSelectedIndex(0);
+        tfSerNome.requestFocus();
+    }
+    
+    private void gravaServico() {
+        String nome = tfSerNome.getText();
+        String servico = cbSerServico.getSelectedItem().toString();
+        double valor = Converte.textToValue(tfSerValor.getText());
+        
+        System.out.println(new Servico(nome, servico, valor));
+        this.limpaCliente();
+    }
+    
     private void limpaTecnico() {
         tfTecNome.setText("");
         tfTecSalario.setText("0,00");
@@ -513,6 +582,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         tfProCusto.setFormatterFactory(Mascara.getValorMask());
         tfProValor.setFormatterFactory(Mascara.getValorMask());
         tfTecSalario.setFormatterFactory(Mascara.getValorMask());
+        tfSerValor.setFormatterFactory(Mascara.getValorMask());
     }
     
     /**
@@ -554,6 +624,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JButton btGravar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JCheckBox cbAtivo;
+    private javax.swing.JComboBox<String> cbSerServico;
     private javax.swing.JLabel lbCliCPF;
     private javax.swing.JLabel lbCliCelular;
     private javax.swing.JLabel lbCliEmail;
@@ -564,6 +635,9 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel lbProDescricao;
     private javax.swing.JLabel lbProEstoque;
     private javax.swing.JLabel lbProValor;
+    private javax.swing.JLabel lbSerNome;
+    private javax.swing.JLabel lbSerServico;
+    private javax.swing.JLabel lbSerValor;
     private javax.swing.JLabel lbTecCargo;
     private javax.swing.JLabel lbTecDepartamento;
     private javax.swing.JLabel lbTecNome;
@@ -586,6 +660,8 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField tfProCusto;
     private javax.swing.JTextField tfProDescricao;
     private javax.swing.JFormattedTextField tfProValor;
+    private javax.swing.JTextField tfSerNome;
+    private javax.swing.JFormattedTextField tfSerValor;
     private javax.swing.JTextField tfTecCargo;
     private javax.swing.JTextField tfTecDepartamento;
     private javax.swing.JTextField tfTecNome;
