@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProdutoDAO implements Persistencia<Produto>{
     private static ProdutoDAO dao = null;
@@ -53,16 +55,106 @@ public class ProdutoDAO implements Persistencia<Produto>{
 
     @Override
     public Produto findByCodigo(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        Produto p = null;
+        String sql = "SELECT * FROM Produtos WHERE Codigo = ?";
+        
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, id);
+            
+            rs = pst.executeQuery();
+            
+            while (rs.next()) {
+                int codigo = rs.getInt("Codigo");
+                String descricao = rs.getString("Descricao");
+                Boolean ativo = rs.getBoolean("Ativo");
+                int estoque = rs.getInt("Estoque");
+                double custo = rs.getDouble("Custo");
+                double valor = rs.getDouble("Valor");
+                
+                p = new Produto(codigo, descricao, ativo, estoque, custo, valor);
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro no Select.");
+        } finally {
+            ConnectionFactory.closeConnection(con, pst, rs);
+        }
+        
+        return p;
     }
 
     @Override
     public void delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String sql = "DELETE FROM Produtos WHERE Codigo = ?";
+        
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, id);
+            pst.execute();
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro no Delete.");
+        } finally {
+            ConnectionFactory.closeConnection(con, pst, rs);
+        }
     }
 
     @Override
-    public void update(Produto obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(Produto p) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String sql = "UPDATE Produtos SET descricao = ?, ativo = ?, estoque = ?, custo = ?, valor = ? WHERE codigo = ?";
+                
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setString(1, p.getDescricao());
+            pst.setBoolean(2, p.isAtivo());
+            pst.setInt(3, p.getEstoque());
+            pst.setDouble(4, p.getCusto());
+            pst.setDouble(5, p.getValor());
+            pst.setInt(6, p.getCodigo());
+            pst.execute();
+            
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro no Update");
+        } finally {
+            ConnectionFactory.closeConnection(con, pst, rs);
+        }
+    }
+
+    @Override
+    public List<Produto> read() {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM Produtos ORDER BY Descricao";
+        List<Produto> lista = new ArrayList<Produto>();
+        
+        try {
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            while (rs.next()) {
+                int codigo = rs.getInt("Codigo");
+                String descricao = rs.getString("Descricao");
+                Boolean ativo = rs.getBoolean("Ativo");
+                int estoque = rs.getInt("Estoque");
+                double custo = rs.getDouble("Custo");
+                double valor = rs.getDouble("Valor");
+                lista.add(new Produto(codigo, descricao, ativo, estoque, custo, valor));
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro no SELECT");
+        } finally {
+            ConnectionFactory.closeConnection(con, pst, rs);
+        }
+        
+        return lista;
     }
 }

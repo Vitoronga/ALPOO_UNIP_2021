@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class TecnicoDAO implements Persistencia<Tecnico>{
     private static TecnicoDAO dao = null;
@@ -61,6 +62,11 @@ public class TecnicoDAO implements Persistencia<Tecnico>{
 
     @Override
     public void update(Tecnico obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Tecnico> read() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

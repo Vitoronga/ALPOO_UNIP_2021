@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteDAO implements Persistencia<Cliente>{
     private static ClienteDAO dao = null;
@@ -123,5 +125,34 @@ public class ClienteDAO implements Persistencia<Cliente>{
         } finally {
             ConnectionFactory.closeConnection(con, pst, rs);
         }
+    }
+
+    @Override
+    public List<Cliente> read() {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM Clientes ORDER BY Nome";
+        List<Cliente> lista = new ArrayList<Cliente>();
+        
+        try {
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                int codigo = rs.getInt("Codigo");
+                String nome = rs.getString("Nome");
+                String cpf = rs.getString("CPF");
+                String fone = rs.getString("Fone");
+                String celular = rs.getString("Celular");
+                String email = rs.getString("Email");
+                lista.add(new Cliente(codigo, nome, cpf, fone, celular, email));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro no SELECT");
+        } finally {
+            ConnectionFactory.closeConnection(con, pst, rs);
+        }
+        
+        return lista;
     }
 }

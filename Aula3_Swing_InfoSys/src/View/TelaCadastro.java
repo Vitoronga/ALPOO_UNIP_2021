@@ -46,6 +46,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         btConsultar = new javax.swing.JButton();
         btGravar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
+        btListar = new javax.swing.JButton();
         tbTela = new javax.swing.JTabbedPane();
         pnCliente = new javax.swing.JPanel();
         lbCliNome = new javax.swing.JLabel();
@@ -158,38 +159,47 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
+        btListar.setText("Listar");
+        btListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btListarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnButtonsLayout = new javax.swing.GroupLayout(pnButtons);
         pnButtons.setLayout(pnButtonsLayout);
         pnButtonsLayout.setHorizontalGroup(
             pnButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnButtonsLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(btGravar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btGravar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(14, 14, 14)
                 .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btConsultar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfCod, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(13, 13, 13))
         );
         pnButtonsLayout.setVerticalGroup(
             pnButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnButtonsLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnButtonsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfCod)
-                    .addComponent(btConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btExcluir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btListar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btExcluir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btGravar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnButtonsLayout.createSequentialGroup()
-                        .addComponent(btAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(btGravar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfCod, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -247,7 +257,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                         .addComponent(lbCliCPF)
                         .addGap(37, 37, 37)
                         .addComponent(tfCliCPF)))
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         pnClienteLayout.setVerticalGroup(
             pnClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +282,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(pnClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCliEmail)
                     .addComponent(tfCliEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         tbTela.addTab("Clientes", pnCliente);
@@ -348,7 +358,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                                 .addComponent(cbAtivo)
                                 .addGap(79, 79, 79))
                             .addComponent(tfProDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         pnProdutoLayout.setVerticalGroup(
             pnProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,7 +410,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addComponent(tfSerNome, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbSerServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfSerValor, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         pnServicoLayout.setVerticalGroup(
             pnServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,7 +427,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(pnServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbSerValor)
                     .addComponent(tfSerValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         tbTela.addTab("Serviços", pnServico);
@@ -459,7 +469,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                                     .addComponent(tfTecNome, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tfTecCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tfTecSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 159, Short.MAX_VALUE))))
+                        .addGap(0, 160, Short.MAX_VALUE))))
         );
         pnTecnicoLayout.setVerticalGroup(
             pnTecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,7 +490,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(pnTecnicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbTecDepartamento)
                     .addComponent(tfTecDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         tbTela.addTab("Tecnicos", pnTecnico);
@@ -498,9 +508,10 @@ public class TelaCadastro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tbTela)
+                .addComponent(tbTela, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pnButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -526,10 +537,12 @@ public class TelaCadastro extends javax.swing.JFrame {
     
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         if (tbTela.getSelectedComponent() == pnCliente) excluirCliente();
+        else if (tbTela.getSelectedComponent() == pnProduto) excluirProduto();
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
         if (tbTela.getSelectedComponent() == pnCliente) alterarCliente();
+        else if (tbTela.getSelectedComponent() == pnProduto) alterarProduto();
     }//GEN-LAST:event_btAlterarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
@@ -548,7 +561,16 @@ public class TelaCadastro extends javax.swing.JFrame {
 
     private void btConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultarActionPerformed
         if (tbTela.getSelectedComponent() == pnCliente) consultaCliente();
+        else if (tbTela.getSelectedComponent() == pnProduto) consultaProduto();
     }//GEN-LAST:event_btConsultarActionPerformed
+
+    private void btListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarActionPerformed
+        String cadastro = null;
+        if (tbTela.getSelectedComponent() == pnCliente) cadastro = "Cliente";
+        else if (tbTela.getSelectedComponent() == pnProduto) cadastro = "Produto";        
+        TelaConsulta tela = new TelaConsulta(cadastro);
+        tela.setVisible(true);
+    }//GEN-LAST:event_btListarActionPerformed
     
     private void limpaCliente() {
         tfCliNome.setText("");
@@ -663,6 +685,38 @@ public class TelaCadastro extends javax.swing.JFrame {
         DAO.ClienteDAO.getInstance().update(cliente);
     }
     
+    private void consultaProduto() {
+        Produto produto = new Produto();
+        produto = DAO.ProdutoDAO.getInstance().findByCodigo(Integer.parseInt(tfCod.getText()));
+        tfProDescricao.setText(produto.getDescricao());
+        
+        if (produto.isAtivo() == true) cbAtivo.setSelected(true);
+        else cbAtivo.setSelected(false);
+        
+        spProEstoque.setValue(produto.getEstoque());
+        tfProCusto.setText(String.format("%.2f", produto.getCusto()));
+        tfProValor.setText(String.format("%.2f", produto.getValor()));
+    }
+    
+    private void excluirProduto() {
+        DAO.ProdutoDAO.getInstance().delete(Integer.parseInt(tfCod.getText()));
+        limpaProduto();
+    }
+    
+    private void alterarProduto() {
+        int codigo = Integer.parseInt(tfCod.getText());
+        String descricao = tfProDescricao.getText();
+        int estoque = (int) spProEstoque.getValue();
+        Boolean ativo;
+        if (cbAtivo.isSelected()) ativo = true;
+        else ativo = false;
+        
+        double custo = Converte.textToValue(tfProCusto.getText());
+        double valor = Converte.textToValue(tfProValor.getText());
+        Produto produto = new Produto(codigo, descricao, ativo, estoque, custo, valor);
+        DAO.ProdutoDAO.getInstance().update(produto);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -704,6 +758,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btGravar;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btListar;
     private javax.swing.JCheckBox cbAtivo;
     private javax.swing.JComboBox<String> cbSerServico;
     private javax.swing.JLabel lbCliCPF;

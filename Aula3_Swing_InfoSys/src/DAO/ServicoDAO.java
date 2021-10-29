@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class ServicoDAO implements Persistencia<Servico>{
     private static ServicoDAO dao = null;
@@ -60,6 +61,11 @@ public class ServicoDAO implements Persistencia<Servico>{
 
     @Override
     public void update(Servico obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Servico> read() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

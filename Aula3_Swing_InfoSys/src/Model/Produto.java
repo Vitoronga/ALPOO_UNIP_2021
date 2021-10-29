@@ -1,6 +1,8 @@
 package Model;
 
 import DAO.ProdutoDAO;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class Produto {
     private int codigo = 0;
@@ -10,6 +12,19 @@ public class Produto {
     private double custo = 0;
     private double valor = 0;
 
+    public Produto() {
+        
+    }
+    
+    public Produto(int cod, String d, Boolean a, int e, double c, double v) {
+        this.setCodigo(cod);
+        this.setDescricao(d);
+        this.setAtivo(a);
+        this.setEstoque(e);
+        this.setCusto(c);
+        this.setValor(v);
+    }
+    
     public Produto(String d, int e, double c, double v) {
         this.setDescricao(d);
         this.setEstoque(e);
@@ -87,5 +102,23 @@ public class Produto {
         
         int cod = dao.create(this);
         if(cod > 0) this.setCodigo(cod);
+    }
+    
+    public static DefaultTableModel getTableModel() {
+        List<Produto> lista = ProdutoDAO.getInstance().read();
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Descricao");
+        modelo.addColumn("Ativo");
+        modelo.addColumn("Estoque");
+        modelo.addColumn("Custo");
+        modelo.addColumn("Valor");
+        
+        for (Produto p : lista) {
+            String[] reg = {p.getDescricao(), String.valueOf(p.isAtivo()), String.valueOf(p.getEstoque()), 
+                String.valueOf(p.getCusto()), String.valueOf(p.getValor())};
+            modelo.addRow(reg);
+        }
+        
+        return modelo;
     }
 }
